@@ -11,7 +11,7 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function ViewProduk()
     {
         $produk = Produk::all();
         return view('produk', ['produk' => $produk]);
