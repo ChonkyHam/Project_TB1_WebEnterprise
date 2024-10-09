@@ -25,7 +25,14 @@
     <div class="main-content">
         <!-- Header -->
         <header style="display: flex; justify-content:space-between">
-            <h1>Produk Penjualan</h1>
+            <div>
+                <h1>Daftar Produk</h1>
+                <p>Termukan Produk Terbaik Untuk Kebutuhan Anda</p>
+            </div>
+
+            <div>
+                <button class="card-button"><a class="text-decoration-none text-wh" href="{{ url('/produk/add') }}">Add Product</a></button>
+            </div>
         </header>
 
         <!-- Product Grid -->
@@ -35,34 +42,16 @@
             <div class="product-card">
                 <img src="https://via.placeholder.com/200" alt="produk 1">
                 <h3>{{ $item->nama_produk }}</h3>
-                <p class="price">{{$item->nama_produk}}</p>
+                <p class="price">{{$item->harga}}</p>
                 <p class="description">{{ $item->deskripsi}}</p>
                 <button class="add-to-cart">Edit</button>
                 <button class="cancel-to-cart">Delete</button>
+                <form action="{{ url('produk/delete/', $item->kode_produk) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
             </div>
             @endforeach
-{{--
-            <!-- product card 2 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="produk 2">
-                <h3>Produk 2</h3>
-                <p class="price">Rp. 300.000</p>
-                <p class="description">Deskripsi singkat Produk 2</p>
-                <button class="add-to-cart">+</button>
-                <button class="cancel-to-cart">-</button>
-            </div>
-
-            <!-- product card 3 -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="produk 3">
-                <h3>Produk 3</h3>
-                <p class="price">Rp. 400.000</p>
-                <p class="description">Deskripsi singkat Produk 3</p>
-                <button class="add-to-cart">+</button>
-                <button class="cancel-to-cart">-</button>
-            </div>
-        </div>
-    </div> --}}
 
     <!-- Footer -->
     <footer>
