@@ -64,11 +64,13 @@
                 <p class="price">{{$item->harga}}</p>
                 <p class="description">{{ $item->deskripsi}}</p>
                 <button class="add-to-cart">Edit</button>
-                <button class="cancel-to-cart">Delete</button>
-                <form action="{{ url('produk/delete/', $item->kode_produk) }}" method="POST">
+
+                <form action="{{ url('produk/delete', $item->kode_produk) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
+
             </div>
             @endforeach
 

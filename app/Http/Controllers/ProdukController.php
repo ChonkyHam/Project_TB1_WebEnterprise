@@ -35,7 +35,7 @@ class ProdukController extends Controller
 
     public function DeleteProduk($kode_produk)
     {
-        Produk::where('kode_produk, $kode_produk')->delete();
+        Produk::where('kode_produk', $kode_produk)->delete();
 
         return redirect('/produk');
     }
