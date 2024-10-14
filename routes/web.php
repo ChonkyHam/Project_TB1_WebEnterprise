@@ -18,7 +18,7 @@ Route::get ('/produk', [ProdukController::class, 'ViewProduk']);
 Route::get ('/produk/add', [ProdukController::class, 'ViewAddProduk']);
 
 Route::delete('/produk/delete/{kode_produk}', [ProdukController::class, 'DeleteProduk']);
-Route::post ('/add', [ProdukController::class, 'CreateProduk']);
+Route::post('/add', [ProdukController::class, 'CreateProduk']);
 
 
 

@@ -170,3 +170,29 @@ footer {
         padding: 10px;
     }
 }
+
+/* .card-button {
+    background-color: #007BFF;
+    color: #FFFFFF !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+} */
+
+a.card-button, button.card-button {
+    background-color: #007BFF;
+    color: #FFFFFF !important;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a.card-button:hover, button.card-button:hover {
+    background-color: #0056b3;
+}

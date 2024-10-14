@@ -39,6 +39,7 @@
 
                 <!-- Form to create a new produk -->
                  <form action="{{url('/add') }}" method="POST">
+
                     @csrf
                      <div class="form-group">
                         <label for="nama_produk">Nama Produk</label>

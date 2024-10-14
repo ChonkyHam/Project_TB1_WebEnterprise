@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Produk;
 use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
 
-use illuminate\http\Request;
+
+use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function ViewProduk()
     {
         $produk = Produk::all();

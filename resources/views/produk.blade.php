@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 </head>
 
+
+<style>
+    .card-button {
+        background-color: #007BFF; /* Blue background */
+        color: #FFFFFF !important; /* Force white text */
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Change cursor to pointer when hovering */
+        text-decoration: none; /* Remove underline from the link */
+    }
+
+    .card-button:hover {
+        background-color: #0056b3; /* Darker blue when hovering */
+    }
+</style>
+
+
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
