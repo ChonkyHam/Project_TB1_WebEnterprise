@@ -39,5 +39,16 @@ class ProdukController extends Controller
 
         return redirect('/produk');
     }
-}
 
+    public function ViewEditProduk($kode_produk)
+    {
+        $ubahproduk = Produk::where{'kode_produk', $kode_produk)->update([
+            'nama_produk' => $request->nama_produk,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'jumlah_produk' => $request->jumlah_produk
+        ]);
+        return redirect('/produk');
+    }
+
+}
