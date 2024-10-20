@@ -8,25 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 </head>
 
-
-<style>
-    .card-button {
-        background-color: #007BFF; /* Blue background */
-        color: #FFFFFF !important; /* Force white text */
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Change cursor to pointer when hovering */
-        text-decoration: none; /* Remove underline from the link */
-    }
-
-    .card-button:hover {
-        background-color: #0056b3; /* Darker blue when hovering */
-    }
-</style>
-
-
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -44,35 +25,36 @@
     <div class="main-content">
         <!-- Header -->
         <header style="display: flex; justify-content:space-between">
+            <h1>Daftar Produk</h1>
             <div>
-                <h1>Daftar Produk</h1>
-                <p>Termukan Produk Terbaik Untuk Kebutuhan Anda</p>
-            </div>
-
-            <div>
-                <button class="card-button"><a class="text-decoration-none text-wh" href="{{ url('/produk/add') }}">Add Product</a></button>
+            <button class="card-button" style="background-color: #3498db;"><a class="text-decoration-none text-white" href="{{ url('/produk/add') }}">Add Product</a></button>
             </div>
         </header>
+        <h6>Temukan produk terbaik untuk kebutuhan Anda</h6>
 
         <!-- Product Grid -->
         <div class="product-grid">
             <!-- product card 1 -->
             @foreach ($produk as $item)
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="produk 1">
-                <h3>{{ $item->nama_produk }}</h3>
-                <p class="price">{{$item->harga}}</p>
-                <p class="description">{{ $item->deskripsi}}</p>
-                <button class="add-to-cart">Edit</button>
 
-                <form action="{{ url('produk/delete', $item->kode_produk) }}" method="POST" style="display:inline;">
+            <div class="product-card">
+                {{-- <img src="{{ url('storage/image/' . $item->image) }}" alt="produk 1"> --}}
+                <img src="{{ asset('storage/image/' . $item->image) }}" alt="{{ $item->nama_produk }}">
+                <h3>{{ $item->nama_produk }}</h3>
+                <p class="price">{{ $item->harga }}</p>
+                <p class="description">{{ $item->deskripsi }}</p>
+                <form action="{{ url('produk/edit/'. $item->kode_produk) }}" method="GET">
+                    <button type="submit" class="add-to-cart">Edit</button>
+                </form>
+                <form action="{{ url('produk/delete/'. $item->kode_produk) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="cancel-to-cart">Delete</button>
                 </form>
-
             </div>
             @endforeach
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>

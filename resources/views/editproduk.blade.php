@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +9,12 @@
     <link rel="stylesheet" href="{{ asset('/css/produk.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 </head>
-
-
-<style>
-    .card-button {
-        background-color: #007BFF; /* Blue background */
-        color: #FFFFFF !important; /* Force white text */
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Change cursor to pointer when hovering */
-        text-decoration: none; /* Remove underline from the link */
-    }
-
-    .card-button:hover {
-        background-color: #0056b3; /* Darker blue when hovering */
-    }
-</style>
-
-
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
         <h2>Dashboard Penjualan</h2>
         <ul>
-            <li><a href="{{ url('index') }}">Home</a></li>
+            <li><a href="{{ url('contoh') }}">Home</a></li>
             <li><a href="{{ url('produk') }}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
             <li><a href="#">Laporan</a></li>
@@ -42,41 +24,60 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
+        <!-- header -->
         <header style="display: flex; justify-content:space-between">
             <div>
                 <h1>Daftar Produk</h1>
-                <p>Termukan Produk Terbaik Untuk Kebutuhan Anda</p>
+                <p>Temukan produk terbaik untuk kebutuhan Anda</p>
             </div>
-
-            <div>
-                <button class="card-button"><a class="text-decoration-none text-wh" href="{{ url('/produk/add') }}">Add Product</a></button>
-            </div>
+            <!-- <div>
+                <button class="card-button">Add Product</button>
+            </div> -->
         </header>
+        <!-- Produk Grit -->
+        <div>
+            <div class="container">
+                <h1>Edit Produk</h1>
 
-        <!-- Product Grid -->
-        <div class="product-grid">
-            <!-- product card 1 -->
-            @foreach ($produk as $item)
-            <div class="product-card">
-                <img src="https://via.placeholder.com/200" alt="produk 1">
-                <h3>{{ $item->nama_produk }}</h3>
-                <p class="price">{{$item->harga}}</p>
-                <p class="description">{{ $item->deskripsi}}</p>
-                <button class="add-to-cart">Edit</button>
-
-                <form action="{{ url('produk/delete', $item->kode_produk) }}" method="POST" style="display:inline;">
+                <!-- Form to edit a new produk -->
+                <form action="{{url('produk/edit/' . $ubahproduk->kode_produk) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="nama_produk">Nama Produk</label>
+                        <input type="text" name="nama_produk" class="form-control" required value='{{$ubahproduk->nama_produk}}'>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deskripsi">Deskripsi</label>
+                        <input type="text" name="deskripsi" class="form-control" required value='{{$ubahproduk->deskripsi}}'>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="number" name="harga" class="form-control" required value='{{$ubahproduk->harga}}'>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jumlah-produk">Jumlah Produk</label>
+                        <input type="text" name="jumlah_produk" class="form-control" required value='{{$ubahproduk->jumlah_produk}}'>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Gambar</label>
+                        <input type="file" name="image" class="form-control" required value='{{$ubahproduk->jumlah_produk}}'>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Edit</button>
                 </form>
-
             </div>
-            @endforeach
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; INI PAGE EDIT PRODUK!!!!!</p>
-    </footer>
+        <!-- footer -->
+        <footer>
+            <p>&copy; 2024 APlikasi Penjualan. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
