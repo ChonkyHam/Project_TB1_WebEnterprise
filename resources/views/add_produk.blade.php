@@ -61,10 +61,6 @@
                         <input type="text" name="jumlah_produk" class="form-control" required>
                      </div>
 
-                     <div class="form-group">
-                        <label for="image">Gambar</label>
-                        <input type="file" name="image" class="form-control" required value='{{$ubahproduk->jumlah_produk}}'>
-                    </div>
 
                      <button type="submit" class="btn btn-primary">Create</button>
                 </form>
