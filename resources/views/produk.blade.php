@@ -11,12 +11,12 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Dashboard Penjualan</h2>
+        <h1>Dashboard Penjualan</h1>
         <ul>
             <li><a href="{{ url('index') }}">Home</a></li>
             <li><a href="{{ url('produk') }}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
-            <li><a href="#">Laporan</a></li>
+            <li><a href="{{ url('laporan') }}">Laporan</a></li>
             <li><a href="#">Pengaturan</a></li>
         </ul>
     </div>

@@ -13,7 +13,7 @@
     <div class="sidebar">
         <h2>Dashboard Penjualan</h2>
         <ul>
-            <li><a href="{{ url('contoh')}}">Home</a></li>
+            <li><a href="{{ url('index') }}">Home</a></li>
             <li><a href="{{ url('produk')}}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
             <li><a href="{{ url('laporan')}}">Laporan</a></li>
@@ -51,9 +51,12 @@
 
         <!-- Sales Chart -->
         <div id="chart">
-            <h2>Grafik Penjualan</h2>
-            <canvas id="salesChart"></canvas>
+            <h2>Grafik Penjualan Bulanan</h2>
+            {{-- <canvas id="salesChart"></canvas> --}}
+            {!! $chart->container() !!}
         </div>
     </div>
+    <script src="{{ $chart->cdn() }}"></script>
+    {{ $chart->script() }}
 </body>
 </html>

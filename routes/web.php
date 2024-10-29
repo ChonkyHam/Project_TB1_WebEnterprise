@@ -25,3 +25,5 @@ Route::put('/produk/edit/{kode_produk}', [ProdukController::class, 'UpdateProduk
 Route::get('/laporan', action: [ProdukController::class, 'ViewLaporan']);
 
 Route::get('/report', action: [ProdukController::class, 'print']);
+
+Route::get('/index', [ContohController::class, 'ViewHome']);
