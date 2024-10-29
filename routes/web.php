@@ -21,3 +21,7 @@ Route::delete('/produk/delete/{kode_produk}', [ProdukController::class, 'DeleteP
 Route::get('/produk/edit/{kode_produk}', [ProdukController::class, 'ViewEditProduk']);
 
 Route::put('/produk/edit/{kode_produk}', [ProdukController::class, 'UpdateProduk']);
+
+Route::get('/laporan', action: [ProdukController::class, 'ViewLaporan']);
+
+Route::get('/report', action: [ProdukController::class, 'print']);
