@@ -13,10 +13,10 @@
     <div class="sidebar">
         <h1>Dashboard Penjualan</h1>
         <ul>
-            <li><a href="{{ url('index') }}">Home</a></li>
-            <li><a href="{{ url('produk') }}">Produk</a></li>
+            <li><a href="{{ url(Auth::user()->role,'/index')}}">Home</a></li>
+            <li><a href="{{ url(Auth::user()->role,'/produk')}}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
-            <li><a href="{{ url('laporan') }}">Laporan</a></li>
+            <li><a href="{{ url(Auth::user()->role,'/laporan')}}">Laporan</a></li>
             <li><a href="#">Pengaturan</a></li>
         </ul>
     </div>

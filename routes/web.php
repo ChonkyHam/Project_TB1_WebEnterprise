@@ -41,7 +41,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 
-Route::middleware(['auth', 'user-access-user'])->prefix('user')->group(function(){
+Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(){
 
     Route::get('/index', [ContohController::class, 'ViewHome']);
 
@@ -62,8 +62,26 @@ Route::middleware(['auth', 'user-access-user'])->prefix('user')->group(function(
 
     Route::get('/laporan', action: [ProdukController::class, 'ViewLaporan']);
 
+});
+
+Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function(){
+
+    Route::get('/index', [ContohController::class, 'ViewHome']);
+
+    Route::get('/produk', [ProdukController::class, 'ViewProduk']);
+
+    Route::get('/produk/add', [ProdukController::class, 'ViewAddProduk']);
+
+    Route::post('/produk/add', [ProdukController::class, 'CreateProduk']);
 
 
+    Route::delete('/produk/delete/{kode_produk}', [ProdukController::class, 'DeleteProduk']);
 
+    Route::get('/produk/edit/{kode_produk}', [ProdukController::class, 'ViewEditProduk']);
 
+    Route::put('/produk/edit/{kode_produk}', [ProdukController::class, 'UpdateProduk']);
+
+    Route::get('/report', action: [ProdukController::class, 'print']);
+
+    Route::get('/laporan', action: [ProdukController::class, 'ViewLaporan']);
 });
