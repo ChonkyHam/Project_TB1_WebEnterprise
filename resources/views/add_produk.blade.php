@@ -38,7 +38,7 @@
                 <h1>Create Produk</h1>
 
                 <!-- Form to create a new produk -->
-                 <form action="{{url('/add') }}" method="POST">
+                 <form action="{{url(Auth::user()->role.'/produk/add') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                      <div class="form-group">

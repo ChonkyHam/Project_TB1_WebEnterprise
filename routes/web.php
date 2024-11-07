@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 // Route::get ('/index', [ContohController::class, 'TampilContoh']);
@@ -43,7 +43,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(){
 
-    Route::get('/index', [ContohController::class, 'ViewHome']);
+    Route::get('/user/index', [ContohController::class, 'TampilContoh']);
 
     Route::get('/produk', [ProdukController::class, 'ViewProduk']);
 
@@ -66,7 +66,7 @@ Route::middleware(['auth', 'user-access:user'])->prefix('user')->group(function(
 
 Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function(){
 
-    Route::get('/index', [ContohController::class, 'ViewHome']);
+    Route::get('/index', [ContohController::class, 'TampilContoh']);
 
     Route::get('/produk', [ProdukController::class, 'ViewProduk']);
 

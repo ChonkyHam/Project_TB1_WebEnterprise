@@ -40,7 +40,7 @@
                 <h1>Edit Produk</h1>
 
                 <!-- Form to edit a new produk -->
-                <form action="{{url('produk/edit/' . $ubahproduk->kode_produk) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{url(Auth::user()->role. 'produk/edit/' . $ubahproduk->kode_produk) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
