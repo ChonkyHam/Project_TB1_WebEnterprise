@@ -8,6 +8,7 @@ use App\Http\Requests\StoreprodukRequest;
 use App\Http\Requests\UpdateprodukRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 
 
 class ProdukController extends Controller
@@ -89,13 +90,19 @@ class ProdukController extends Controller
 
     public function ViewLaporan()
     {
-        $products = Produk::all();
+        $isAdmin = Auth::user()->role == 'admin';
+
+        $products = $isAdmin ? Produk::all() : Produk::where('user_id', Auth::user()->id)->get();
+        // $products = Produk::all();
         return view('laporan', ['products' => $products]);
     }
 
     public function print()
     {
-        $products = Produk::all();
+        $isAdmin = Auth::user()->role == 'admin';
+
+        $products = $isAdmin ? Produk::all() : Produk::where('user_id', Auth::user()->id)->get();
+        // $products = Produk::all();
 
         $pdf = Pdf::loadView('report', compact('products'));
 

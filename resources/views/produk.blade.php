@@ -13,11 +13,15 @@
     <div class="sidebar">
         <h1>Dashboard Penjualan</h1>
         <ul>
-            <li><a href="{{ url(Auth::user()->role,'/index')}}">Home</a></li>
-            <li><a href="{{ url(Auth::user()->role,'/produk')}}">Produk</a></li>
+            <li><a href="{{ url(Auth::user()->role.'/index')}}">Home</a></li>
+            <li><a href="{{ url(Auth::user()->role.'/produk')}}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
-            <li><a href="{{ url(Auth::user()->role,'/laporan')}}">Laporan</a></li>
+            <li><a href="{{ url(Auth::user()->role.'/laporan')}}">Laporan</a></li>
             <li><a href="#">Pengaturan</a></li>
+            <form action="{{ url('/logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="text-decoration-none bg-transparent border-0 text-white"
+                    style="font-size: 18px;">Logout</button>
         </ul>
     </div>
 
@@ -27,7 +31,7 @@
         <header style="display: flex; justify-content:space-between">
             <h1>Daftar Produk</h1>
             <div>
-            <button class="card-button" style="background-color: #3498db;"><a class="text-decoration-none text-white" href="{{ url('/produk/add') }}">Add Product</a></button>
+            <button class="card-button" style="background-color: #3498db;"><a class="text-decoration-none text-white" href="{{ url(Auth::user()->role . '/produk/add') }}">Add Product</a></button>
             </div>
         </header>
         <h6>Temukan produk terbaik untuk kebutuhan Anda</h6>
@@ -43,10 +47,10 @@
                 <h3>{{ $item->nama_produk }}</h3>
                 <p class="price">{{ $item->harga }}</p>
                 <p class="description">{{ $item->deskripsi }}</p>
-                <form action="{{ url('produk/edit/'. $item->kode_produk) }}" method="GET">
+                <form action="{{ url(Auth::user()->role . '/produk/edit/'. $item->kode_produk) }}" method="GET">
                     <button type="submit" class="add-to-cart">Edit</button>
                 </form>
-                <form action="{{ url('produk/delete/'. $item->kode_produk) }}" method="POST">
+                <form action="{{ url(Auth::user()->role . '/produk/delete/'. $item->kode_produk) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="cancel-to-cart">Delete</button>

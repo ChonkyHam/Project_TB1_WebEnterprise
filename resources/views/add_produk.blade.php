@@ -12,10 +12,10 @@
      <div class="sidebar">
         <h2>Dashboard Penjualan</h2>
         <ul>
-            <li><a href="{{ url(Auth::user()->role,'/index')}}">Home</a></li>
-            <li><a href="{{ url(Auth::user()->role,'/produk')}}">Produk</a></li>
+            <li><a href="{{ url(Auth::user()->role. '/index')}}">Home</a></li>
+            <li><a href="{{ url(Auth::user()->role. '/produk')}}">Produk</a></li>
             <li><a href="#">Penjualan</a></li>
-            <li><a href="{{ url(Auth::user()->role,'/laporan')}}">Laporan</a></li>
+            <li><a href="{{ url(Auth::user()->role. '/laporan')}}">Laporan</a></li>
             <li><a href="#">Pengaturan</a></li>
         </ul>
      </div>
@@ -38,7 +38,7 @@
                 <h1>Create Produk</h1>
 
                 <!-- Form to create a new produk -->
-                 <form action="{{url(Auth::user()->role.'/produk/add') }}" method="POST" enctype="multipart/form-data">
+                 <form action="{{url(Auth::user()->role . '/produk/add') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                      <div class="form-group">
@@ -61,7 +61,10 @@
                         <input type="text" name="jumlah_produk" class="form-control" required>
                      </div>
 
-
+                     <div class="form-group">
+                        <label for="image">Gambar</label>
+                        <input type="file" name="image" class="form-control" required>
+                    </div>
                      <button type="submit" class="btn btn-primary">Create</button>
                 </form>
             </div>

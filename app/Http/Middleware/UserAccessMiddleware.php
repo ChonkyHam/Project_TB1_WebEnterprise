@@ -9,45 +9,29 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserAccessMiddleware
 {
-    // /**
-    //  * Handle an incoming request.
-    //  *
-    //  * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-    //  */
-    // public function handle(Request $request, Closure $next): Response
-    // {
-    //     if(Auth::user()->role == $userType){
-    //         return $next($request);
-    //     }
-
-    //     return response()->json([
-    //         'erro' => 'You Do Not Have The Permission To Access This Page.',
-    //         'userType' => $userType
-    //     ]);
-        /**
+    /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, $userType): Response
     {
-
+        // Jika pengguna sudah login, izinkan akses
         if (Auth::check()) {
 
-            if (Auth::user()->role == 'admin') {
+            if (Auth::user()->role == 'admin'){
                 return $next($request);
             }
 
-
-            if (Auth::user()->role == $userType) {
+            if (Auth::user()->role == $userType){
                 return $next($request);
             }
+
         }
 
-
+        // Jika pengguna belum login, berikan respon akses ditolak
         return response()->json([
-            'error' => 'Anda tidak memiliki izin untuk mengakses halaman ini',
-            'userType' => $userType
+            'error' => 'Anda tidak memiliki izin untuk mengakses halaman ini'
         ], 403);
     }
 }
